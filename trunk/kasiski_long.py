@@ -1,8 +1,8 @@
 
 
-# Fonction kasiski_long
-# obj:      Permet de trouver la période
-# param:    le texte chiffré
-def kasiski_long(texte):
+# Nom:      kasiski_long
+# Obj:      Permet de trouver la période
+# Param:    le texte chiffré
+def kasiski_long(text):
     
     return ret

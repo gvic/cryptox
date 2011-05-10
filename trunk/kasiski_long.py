@@ -17,7 +17,11 @@ def kasiski_long(text):
     for poss in letter_positions(ctext):
         all_differences.extend(differences(poss))
 
-    return all_differences
+    all_differences = determin_list(all_differences)
+    
+    ret = max(all_differences)
+    
+    return all_differences.index(ret)+1
 
 # Function which return a list of lists containing the positions of each letters
 # in the given text
@@ -49,10 +53,28 @@ def differences(lst):
     return res
 
 
+def determin_list(input_liste):
+    l = range(24)
+    lst = [0 for e in l]
+    
+    # On parcourt de 0 a 23
+    for i in l:
+        # on parcourt la liste des distances
+        for j in input_liste: 
+            if j % (i+1) == 0:
+                lst[i] += 1;
+                
+    return [(e+1)*ee for e,ee in zip(l,lst)]
+
+
 # Just to test
 def main():
     # the main code goes here
-    print kasiski_long("abc db cab")
+    text = "RNQJH  AUKGV  WGIVO  BBSEJ  CRYUS  FMQLP  OFTLC"
+    text += "MRHKB BUTNA  WXZQS  NFWLM  OHYOF  VMKTV  HKVPK"
+    text += "KSWEI  TGSRB LNAGJ  BFLAM  EAEJW  WVGZG  SVLBK"
+    text += "IXHGT  JKYUC  HLKTU MWWK"
+    print kasiski_long(text)
  
 if __name__ == "__main__":
     main()

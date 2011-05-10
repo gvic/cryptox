@@ -18,7 +18,6 @@ def kasiski_long(text):
         all_differences.extend(differences(poss))
 
     all_differences = determin_list(all_differences)
-    
     ret = max(all_differences)
     
     return all_differences.index(ret)+1
@@ -63,18 +62,33 @@ def determin_list(input_liste):
         for j in input_liste: 
             if j % (i+1) == 0:
                 lst[i] += 1;
-                
+                               
     return [(e+1)*ee for e,ee in zip(l,lst)]
 
 
 # Just to test
 def main():
     # the main code goes here
-    text = "RNQJH  AUKGV  WGIVO  BBSEJ  CRYUS  FMQLP  OFTLC"
-    text += "MRHKB BUTNA  WXZQS  NFWLM  OHYOF  VMKTV  HKVPK"
-    text += "KSWEI  TGSRB LNAGJ  BFLAM  EAEJW  WVGZG  SVLBK"
-    text += "IXHGT  JKYUC  HLKTU MWWK"
+    
+    # lanaki test text
+    # expected result : 7
+    text1 = "RNQJH  AUKGV  WGIVO  BBSEJ  CRYUS  FMQLP  OFTLC"
+    text1 += "MRHKB BUTNA  WXZQS  NFWLM  OHYOF  VMKTV  HKVPK"
+    text1 += "KSWEI  TGSRB LNAGJ  BFLAM  EAEJW  WVGZG  SVLBK"
+    text1 += "IXHGT  JKYUC  HLKTU MWWK"
+    
+    # project test text
+    # expected result : 6 or 12
+    text = "phyjs  lyddq fdzxg asgzz qqehx gkfnd rxuju giocy tdxvk sbxhh"
+    text += "uypoh  dvyry mhuhp uydkj oxphe tozsl etnpm vffov pdpaj xhyyn" 
+    text += "ojygg  aymeq ynfuq lnmvl yfgsu zmqiz tlbqg yugsq eubvn rcred"
+    text += "gruzb  lrmxy uhqhp zdrrg crohe pqxuf ivvrp lphon thvdd qfhqs"
+    text += "ntzhh  hnfep mqkyu uexkt ogzgk yuumf vijdq dpzjq sykrp lxhxq"
+    text += "rymvk  lohhh otozv dkspp suvjh d"
+      
+    print "indice:"
     print kasiski_long(text)
+    print"¦-¦-¦-¦-¦-¦-¦-¦"
  
 if __name__ == "__main__":
     main()

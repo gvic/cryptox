@@ -12,20 +12,17 @@ def kasiski_long(text):
         if c in ALPHABET:
             ctext += c
 
-    all_differences = []
-    for poss in letter_positions(ctext):
-        all_differences.extend(differences(poss))
+    ad = all_differences(ctext)
 
-    all_differences = determin_list(all_differences)
-    print all_differences
-    ret = max(all_differences)
+    ad = determin_list(ad)
+    ret = max(ad)
 
     # The max isn't always the solution..
     # Let's try to finds the maxS
     # By getting a max limit = max - 5%*max
     limit = ret-ret/20  
-    maxs = [i for i in all_differences if i>limit]
-    solutions = [indexP(all_differences,v) for v in maxs]
+    maxs = [i for i in ad if i>limit]
+    solutions = [indexP(ad,v) for v in maxs]
     # Solutions should be sorted (as we read the list from beginning to end)
     
     
@@ -35,6 +32,14 @@ def kasiski_long(text):
 #Small useful function
 def indexP(lst,v):
     return lst.index(v)+1
+
+# Get all differences between the letters of a text
+def all_differences(text):
+    diffs = []
+    for poss in letter_positions(text):
+        diffs.extend(differences(poss))
+    return diffs
+
 
 # Function which return a list of lists containing the positions of each letters
 # in the given text
@@ -80,7 +85,7 @@ def determin_list(input_liste):
     return [(e+1)*ee for e,ee in zip(l,lst)]
 
 
-# Just to test
+# Test Function
 def main():
     # the main code goes here
     

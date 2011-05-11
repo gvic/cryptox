@@ -52,6 +52,26 @@ def main():
     print "resultat:"+str(per)
     print "--------------------"
     
+
+
+    # RARETE
+    print "EVALUATION DE LA RARETE"
+    print FREQ_TABLE_DICT
+    for n,d in FREQ_TABLE_DICT.items():
+        print n,d[0]
+    choix=input('Veuillez choisir la langue:')
+    while ~isinstance(crible,int) and (choix < 0 or choix > len(FREQ_TABLE_DICT)):
+        print choix + " n'est pas un choix valide!"
+        choix=input('Veuillez choisir la langue:')
+        
+    freq_table = FREQ_TABLE_DICT.get(choix)[1]
+
+    print "Evaluation de la rarete du crible \""+crible+"\"..."
+    rar = rarete(freq_tabl,crible)
+    print "resultat:"+str(rar)
+    print "--------------------"
+
+
  
 if __name__ == "__main__":
     main()

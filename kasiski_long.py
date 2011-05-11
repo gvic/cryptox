@@ -5,7 +5,6 @@ from ToolBox import *
 # Obj:      Permet de trouver la periode par la méthode "longue"
 # Param:    le texte chiffre
 def kasiski_long(text):
-
     # Remove all none alphabet chars
     ctext = ""
     for c in text:
@@ -18,9 +17,24 @@ def kasiski_long(text):
         all_differences.extend(differences(poss))
 
     all_differences = determin_list(all_differences)
+    print all_differences
     ret = max(all_differences)
+
+    # The max isn't always the solution..
+    # Let's try to finds the maxS
+    # By getting a max limit = max - 5%*max
+    limit = ret-ret/20  
+    maxs = [i for i in all_differences if i>limit]
+    solutions = [indexP(all_differences,v) for v in maxs]
+    # Solutions should be sorted (as we read the list from beginning to end)
     
-    return all_differences.index(ret)+1
+    
+
+    return min(solutions)
+
+#Small useful function
+def indexP(lst,v):
+    return lst.index(v)+1
 
 # Function which return a list of lists containing the positions of each letters
 # in the given text

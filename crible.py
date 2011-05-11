@@ -3,7 +3,7 @@
 from ToolBox import *
 
 # 
-def pertinence(cribble, periode):
+def pertinence(crible, periode):
    
     return ret
 
@@ -14,10 +14,10 @@ def rarete(freq_table ,crible):
       - table de frequence du langage naturel : dictionnaire
       - crible : string
     Desc: 
-     Cette fonction renvoie une valeur entre 0 et 1 pour caractérisé 
-     la rareté du crible.
-     1 décrit une rareté maximale.
-"""
+      Cette fonction renvoie une valeur entre 0 et 1 pour caractérisé 
+      la rareté du crible.
+      1 décrit une rareté maximale.
+    """
 
     n = len(crible)
     # On récupere la lettre qui a la plus haute frequence ds le dictionnaire
@@ -35,8 +35,23 @@ def vraisemblance():
 # Test Function
 def main():
 
+    # PERTINENCE
+    print "RECHERCE DE LA PERTINENCE"
+    crible=input('Veuillez tapez un crible:')
+    while ~isinstance(crible,str):
+        print crible + " n'est pas une chaine de caractère!"
+        crible=input('Veuillez tapez un crible:')
 
+    period=input('Veuillez tapez une période:')
+    while ~isinstance(period,int):
+        print crible + " n'est pas un entier!"
+        crible=input('Veuillez tapez une period:')
 
+    print "Calcul de la pertinence..."
+    per = pertinence(crible,period)
+    print "resultat:"+str(per)
+    print "--------------------"
+    
  
 if __name__ == "__main__":
     main()

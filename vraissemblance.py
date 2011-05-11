@@ -1,0 +1,4 @@
+
+def vraissemblance():
+
+    return ret

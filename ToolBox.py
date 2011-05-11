@@ -1,3 +1,8 @@
+"""
+Librairie rassemblant des fonctions utiles pour la cryptographie
+"""
+
+
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def cshift(str,n):

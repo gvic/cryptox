@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-def pertinence():
+
+# 
+def pertinence(cribble, periode):
+    
     return ret
 
 """
@@ -16,3 +19,13 @@ def rarete(table_freq):
 
 def vraisemblance():
     return ret
+
+
+# Test Function
+def main():
+
+
+
+ 
+if __name__ == "__main__":
+    main()

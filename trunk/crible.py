@@ -37,15 +37,15 @@ def main():
 
     # PERTINENCE
     print "RECHERCE DE LA PERTINENCE"
-    crible=input('Veuillez tapez un crible:')
-    while ~isinstance(crible,str):
+    crible=str(raw_input('Veuillez tapez un crible:'))
+    while not isinstance(crible,str):
         print crible + " n'est pas une chaine de caractère!"
-        crible=input('Veuillez tapez un crible:')
+        crible=str(raw_input('Veuillez tapez un crible:'))
 
-    period=input('Veuillez tapez une période:')
-    while ~isinstance(period,int):
-        print crible + " n'est pas un entier!"
-        crible=input('Veuillez tapez une period:')
+    period=int(raw_input('Veuillez tapez une période:'))
+    while not isinstance(period,int):
+        print str(period) + " n'est pas un entier!"
+        crible=int(raw_input('Veuillez tapez une période:'))
 
     print "Calcul de la pertinence..."
     per = pertinence(crible,period)
@@ -59,10 +59,10 @@ def main():
     print FREQ_TABLE_DICT
     for n,d in FREQ_TABLE_DICT.items():
         print n,d[0]
-    choix=input('Veuillez choisir la langue:')
-    while ~isinstance(crible,int) and (choix < 0 or choix > len(FREQ_TABLE_DICT)):
+    choix=int(raw_input('Veuillez choisir la langue:'))
+    while not isinstance(crible,int) and (choix < 0 or choix > len(FREQ_TABLE_DICT)):
         print choix + " n'est pas un choix valide!"
-        choix=input('Veuillez choisir la langue:')
+        choix=int(raw_input('Veuillez choisir la langue:'))
         
     freq_table = FREQ_TABLE_DICT.get(choix)[1]
 

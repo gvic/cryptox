@@ -19,15 +19,30 @@ def kasiski_long(text):
 
     # The max isn't always the solution..
     # Let's try to finds the maxS
-    # By getting a max limit = max - 5%*max
-    limit = ret-ret/20  
+    # By getting a max limit = max - 10%*max
+    limit = ret-ret/10  
     maxs = [i for i in ad if i>limit]
+
     solutions = [indexP(ad,v) for v in maxs]
     # Solutions should be sorted (as we read the list from beginning to end)
-    
-    
 
-    return min(solutions)
+    print "Here are the period values possible:"
+    print solutions
+    length = len(solutions)-1
+    print "Which one do you wan't to choose? (0,1,..,%d)" % length
+
+
+    x = -1
+    while x<0:
+        try:
+            x = int(raw_input())
+            if x > len(solutions)-1:
+                x = -1
+                raise ValueError
+        except ValueError:
+            print 'Invalid Number'
+
+    return solutions[x]
 
 #Small useful function
 def indexP(lst,v):
@@ -105,9 +120,7 @@ def main():
     text += "ntzhh  hnfep mqkyu uexkt ogzgk yuumf vijdq dpzjq sykrp lxhxq"
     text += "rymvk  lohhh otozv dkspp suvjh d"
       
-    print "indice:"
     print kasiski_long(text)
-    print"¦-¦-¦-¦-¦-¦-¦-¦"
  
 if __name__ == "__main__":
     main()

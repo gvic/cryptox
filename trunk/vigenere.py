@@ -3,13 +3,13 @@ Vigenere
 """
 
 alphabet0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-alphabet1 = "gqkreshtovwmcjxyzpflundiab".upper()
-alphabet2 = "mvqwjxoyszlrhpundtkiabcdfg".upper()
-alphabet3 = "cmgoapeqjrshiftvwkbxyzlund".upper()
-alphabet4 = "jsotgvkwqxypfmzlurhndiabce".upper()
-alphabet5 = "vnydsiwalbczrxefguthjkmopq".upper()
-alphabet6 = "hrmsftjvpwxoekyzlqgundiabc".upper()
-alphabet7 = "wdzitaxbucelsyfghnvjkmopqr".upper()
+# alphabet1 = "gqkreshtovwmcjxyzpflundiab".upper()
+# alphabet2 = "mvqwjxoyszlrhpundtkiabcdfg".upper()
+# alphabet3 = "cmgoapeqjrshiftvwkbxyzlund".upper()
+# alphabet4 = "jsotgvkwqxypfmzlurhndiabce".upper()
+# alphabet5 = "vnydsiwalbczrxefguthjkmopq".upper()
+# alphabet6 = "hrmsftjvpwxoekyzlqgundiabc".upper()
+# alphabet7 = "wdzitaxbucelsyfghnvjkmopqr".upper()
 
 base = len(alphabet0)
 
@@ -41,7 +41,7 @@ def encrypt(ptext, key):
             i = (i+1) % len(k)
     return ctext
 
-    
+
 def decrypt(ptext, key):    
     k = ""
     for c in key:

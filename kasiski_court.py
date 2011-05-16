@@ -2,7 +2,7 @@ from ToolBox import *
 
 # Nom:      kasiski_court
 # Obj:      Permet de trouver la période par la méthode "courte"
-# Param:    le texte chiffré
+# Param:    le texte chiffré, la taille de la sous chaine
 def kasiski_court(text, l):
     """
     Find all repeated substrings of length 'l' in 'text'

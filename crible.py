@@ -42,7 +42,10 @@ def pertinence(crible,periode):
     for e in l:
         if e % periode == 0:
             indice += 1
-    return float(indice)/float((len(l)))
+    if len(l) >0:
+        return float(indice)/float((len(l)))
+    else:
+        return 0
     #return float(indice)/(float(len(crible))/float(periode))
 
 def rarete(freq_table ,crible):
@@ -72,43 +75,69 @@ def vraisemblance():
 
 # Test Function
 def main():
-
-    # PERTINENCE
-    print "RECHERCE DE LA PERTINENCE"
-    crible=str(raw_input('Veuillez tapez un crible:'))
-    while not isinstance(crible,str):
-        print crible + " n'est pas une chaine de caractère!"
-        crible=str(raw_input('Veuillez tapez un crible:'))
-
-    period=int(raw_input('Veuillez tapez une période:'))
-    while not isinstance(period,int):
-        print str(period) + " n'est pas un entier!"
-        crible=int(raw_input('Veuillez tapez une période:'))
-
-    print "Calcul de la pertinence..."
-    per = pertinence(crible,period)
-    print "resultat:"+str(per)
-    print "--------------------"
-    raw_input()
-
-
-    # RARETE
-    print "EVALUATION DE LA RARETE"
-    for n,d in FREQ_TABLE_DICT.items():
-        print n,d[0]
-    choix=int(raw_input('Veuillez choisir la langue:'))
-    while not isinstance(crible,int) and (choix < 0 or choix > len(FREQ_TABLE_DICT)):
-        print choix + " n'est pas un choix valide!"
-        choix=int(raw_input('Veuillez choisir la langue:'))
-        
-    freq_table = FREQ_TABLE_DICT.get(choix)[1]
     
-    print "Evaluation de la rarete du crible \""+crible+"\"..."
-    rar = rarete(freq_table,crible)
-    print "resultat:"+str(rar)
-    print "--------------------"
+    print ''
+    print 'Veuillez choisir la fonction a évaluer:'
+    print '(P)ertinence'
+    print '(R)areté'
+    print '(L)es deux'
+    print '(Q)uitter'
+    question=str(raw_input())
+
+    if question == 'Q':
+        return 4
+    while not isinstance(question,str) or (question != 'P' and question != 'L' and question != 'R'):
+        print question + " n'est pas valide!"
+        question=str(raw_input())
+
+
+    if question == "P" or question == "L":
+        # PERTINENCE
+        print "RECHERCE DE LA PERTINENCE"
+        crible=str(raw_input('Veuillez tapez un crible:'))
+        while not isinstance(crible,str):
+            print crible + " n'est pas une chaine de caractère!"
+            crible=str(raw_input('Veuillez tapez un crible:'))
+
+        period=int(raw_input('Veuillez tapez une période:'))
+        while not isinstance(period,int):
+            print str(period) + " n'est pas un entier!"
+            crible=int(raw_input('Veuillez tapez une période:'))
+
+        print "Calcul de la pertinence..."
+        per = pertinence(crible,period)
+        print "resultat:"+str(per)
+        print "--------------------"
+        raw_input()
+
+    if question == "R" or question == "L":
+        # RARETE
+        if question == "R":
+            crible=str(raw_input('Veuillez tapez un crible:'))
+            while not isinstance(crible,str):
+                print crible + " n'est pas une chaine de caractère!"
+                crible=str(raw_input('Veuillez tapez un crible:'))
+            
+        print "EVALUATION DE LA RARETE"
+        for n,d in FREQ_TABLE_DICT.items():
+            print n,d[0]
+        choix=int(raw_input('Veuillez choisir la langue:'))
+        while not isinstance(choix,int) and (choix < 0 or choix > len(FREQ_TABLE_DICT)):
+            print choix + " n'est pas un choix valide!"
+            choix=int(raw_input('Veuillez choisir la langue:'))
+        
+        freq_table = FREQ_TABLE_DICT.get(choix)[1]
+        
+        print "Evaluation de la rarete du crible \""+crible+"\"..."
+        rar = rarete(freq_table,crible)
+        print "resultat:"+str(rar)
+        print "--------------------"
 
 
  
 if __name__ == "__main__":
-    main()
+    ret = 0
+    while ret != 4:
+        ret = main()
+
+

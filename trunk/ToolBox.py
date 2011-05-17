@@ -73,6 +73,13 @@ def cshift(str,n):
     slen=len(str)
     return str[n:slen+1]+str[0:n]
 
+# Decalage de chaque lettre de n
+def shift(strg,n):
+    shift2 = lambda txt,sft=1:''.join([[ch,chr((ord(ch) - ord(['A','a'][ch.islower()]) + sft)%26+ord(['A','a'][ch.islower()]))][ch.isalpha()] for ch in txt])
+
+    return shift2(strg,n)
+
+
 def factor (n):
     """
     Return a list of [factor, exponet] pairs for the prime factors
@@ -100,3 +107,9 @@ def factor (n):
         ret += [(n, 1)]
 
     return ret
+
+#def distance(text1, text2):
+ #   d = 0
+
+  #  for c1, c2 in text1, text2:
+        

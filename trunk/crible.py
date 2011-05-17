@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-
 from ToolBox import *
 
 # 
 def pertinence(crible, periode):
-   
+
     return ret
 
 def rarete(freq_table ,crible):

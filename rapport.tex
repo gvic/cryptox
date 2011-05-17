@@ -3,6 +3,10 @@
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{listings}
+
+\lstset{language={Python}}
+
 
 \begin{document}
 
@@ -80,7 +84,15 @@ chiffré.
 \item Comment présentez vous le résultat d'une recherche ?
 \end{itemize}
 \subsubsection{Pertinence}
-...
+Même après avoir réfléchis longuement sur cette notion nous n'avons
+pas pu établir un indicateur réellement fiable pour un crible donné.
+Nous n'avons pas réussi à trouver des règles claires nous permettant
+d'évaluer la pertinence du crible en fonction d'une période.
+
+Comme un exemple vaut mieux qu'un long discours, se reporter à la
+partie test pour voir les résultats de la fonction pertinence.
+
+
 \subsubsection{Rareté}
 Pour la rareté du crible nous avons simplement pour une table de
 fréquence donnée, calculé une valeur entre 0 et 1, 0 représentant une
@@ -114,6 +126,27 @@ le mot.
 
 
 \section{Tests}
+
+\subsection{Crible}
+
+\subsubsection{Pertinence}
+Ces tests ne tiennent pas forcément compte du fait que le crible est
+un mot avec du sens.
+Pour mettre à rude épreuve la logique de la fonction il était plus
+simple d'employer une séquence de lettres avec des répétitions aux
+endroits qui nous intéressait.
+
+\begin{lstlisting}[caption={test de la fonction pertinence}]
+>> p = 6 # la periode
+>> pertinence('soldats',p)
+>> 1.0
+>> pertinence('soldatso',p)
+>> 1.0 # Ici on pourrait s'attendre à un indicateur plus eleve
+\end{lstlisting}
+
+\subsubsection{Rareté}
+
+
 
 \section{Conclusion}
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Librairie rassemblant des fonctions utiles pour la cryptographie
 """
@@ -108,8 +109,20 @@ def factor (n):
 
     return ret
 
-#def distance(text1, text2):
- #   d = 0
-
-  #  for c1, c2 in text1, text2:
+def pgcd(a,b):
+    """
+    pgcd(a,b): calcul du 'Plus Grand Commun Diviseur' entre 
+    les 2 nombres entiers a et b
+    """
+    while b<>0:
+        a,b=b,a%b
+    return a
         
+def pgcdn(n):
+    """
+    Calcul du 'Plus Grand Commun Diviseur' de n valeurs entières (Euclide)
+    """
+    p = pgcd(n[0], n[1])
+    for x in n[2:]:
+        p = pgcd(p, x)
+    return p

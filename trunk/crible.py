@@ -89,12 +89,11 @@ def main():
     per = pertinence(crible,period)
     print "resultat:"+str(per)
     print "--------------------"
-    
+    raw_input()
 
 
     # RARETE
     print "EVALUATION DE LA RARETE"
-    print FREQ_TABLE_DICT
     for n,d in FREQ_TABLE_DICT.items():
         print n,d[0]
     choix=int(raw_input('Veuillez choisir la langue:'))
@@ -103,9 +102,9 @@ def main():
         choix=int(raw_input('Veuillez choisir la langue:'))
         
     freq_table = FREQ_TABLE_DICT.get(choix)[1]
-
+    
     print "Evaluation de la rarete du crible \""+crible+"\"..."
-    rar = rarete(freq_tabl,crible)
+    rar = rarete(freq_table,crible)
     print "resultat:"+str(rar)
     print "--------------------"
 

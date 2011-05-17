@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 
-\lstset{language={Python}}
+\lstset{language={Python},}
 
 
 \begin{document}
@@ -39,34 +39,31 @@ coder le texte clair.
 
 \paragraph{}
 Dans un second temps, il nous est nécessaire de rechercher des cribles
-qui permettent de ... ?
+dans le chiffre, ceci nous permettant d'établir un lien entre les
+lettres du crible et les alphabets.
 
 La qualité de la recherche du crible s'appuie essentiellement sur
 trois \textit{indicateurs} : la \textit{pertinence}, la
-\textit{rareté} et \textit{vraissemblance}.
+\textit{rareté} et la \textit{vraissemblance}.
 
 \paragraph{}
-Enfin il était nécessaire une approche de programmation génétique pour
-pouvoir retrouver complètement les alphabets servant a chiffrer le
-texte clair.
+Enfin il nous était demandé d'avoir une approche de programmation génétique pour
+pouvoir retrouver complètement les alphabets servant à chiffrer le
+texte clair. Cependant nous n'avons pas eu le temps de nous consacrer à
+cette tâche.
 
 
 \section{Conception}
 
 \subsection{Choix du langage}
-Nous connaissions le langage \textit{Python}
+Nous connaissions le langage \textit{Python}.
 Ce dernier étant partiulièrement bien adapté pour la manipulation
 du type de donnée \textit{string}, nous l'avons choisi pour implanter
 le projet.
+Appartenant à la catégorie des langages fonctionnels, c'est également
+un aspect pratique pour le projet.
 
 \subsection{Détermination de la période}
-
-\begin{itemize}
-\item Avez vous traité la méthode courte ?
-\item Comment ?
-\item A quels tests avez-vous procédé ?
-\end{itemize}
-
 
 \subsubsection{Méthode courte}
 Nous avons implanté la méthode de Kasiski courte de la manière
@@ -76,13 +73,39 @@ Pour un texte chiffré et une taille \textit{l} donnée la fonction recherche to
 les sous-chaines de la taille \textit{l} qui se répetent dans le texte
 chiffré.
 
+Une fonction de test se charge de tester toutes les valeurs de l
+intéressantes.
+Pour voir les résultats des tests se reporter à la partie test.
+
+\paragraph{}
+Voici le code python (très accessible) de cette fonction:
+\newpage
+\begin{lstlisting}
+def kasiski_court(text, l):
+    for i in range(len(text)-l):
+        target = text[i:i+l]
+        found = text[i+l:].find(target)
+        if found != -1:
+            f = found+i+l
+            if i>0 and text[i-1:i+l] == text[f-1:f+l]:
+                continue
+            if i+l < len(text) and text[i:i+l+1] == text[f:f+l+1]:
+                continue            
+
+            print '\%-10s \%3d' \% (target, found+l)
+\end{lstlisting}
+
+
 \subsubsection{Méthode longue}
 ... 
 
 \subsection{Recherche de crible}
-\begin{itemize}
-\item Comment présentez vous le résultat d'une recherche ?
-\end{itemize}
+
+Comme nous n'avons pas pu mener à bout cette partie, la problématique
+de la présentation du résultat n'a même pas eu être aborder.
+Voici les \textit{recherches} et codages que nous avons effectué sur
+les notions de pertinence et de rareté.
+
 \subsubsection{Pertinence}
 Même après avoir réfléchis longuement sur cette notion nous n'avons
 pas pu établir un indicateur réellement fiable pour un crible donné.
@@ -94,28 +117,24 @@ partie test pour voir les résultats de la fonction pertinence.
 
 
 \subsubsection{Rareté}
-Pour la rareté du crible nous avons simplement pour une table de
+Pour la rareté du crible nous avons, pour une table de
 fréquence donnée, calculé une valeur entre 0 et 1, 0 représentant une
 rareté nulle et 1 une rareté maximale.
 
-La rareté du crible se fait simplement en sommant la fréquence
+La rareté du crible se fait simplement en sommant les fréquences
 d'apparition de chaque lettre puis en divisant cette somme par le
-nombre de lettre multiplié par la fréquence maximale.
+nombre de lettre multiplié par la fréquence maximale pour la table des
+fréquences donnée.
 
-C'est une espèce de moyenne des fréquences des lettres qui constituent
+C'est une sorte de moyenne des fréquences des lettres qui constituent
 le mot.
+
 \subsubsection{Vraissemblance}
-...
+Nous n'avons pas réussi à établir une fonction d'évaluation de la
+vraisemblance d'une position d'un crible.
+
 
 \subsection{Reconstitution du chiffre}
-
-\subsubsection{Volume mémoriel}
-\subsubsection{Programmation génétique}
-\begin{itemize}
-\item ADN et croisements
-\item Séléction artificielle
-\item Conclusion sur la partie 3 (a mettre dans tests peut etre ?)
-\end{itemize}
 
 \begin{itemize}
 \item Quelle est votre définition du volume mémoriel ?
@@ -125,7 +144,47 @@ le mot.
 \end{itemize}
 
 
+\subsubsection{Volume mémoriel}
+\subsubsection{Programmation génétique}
+\begin{itemize}
+\item ADN et croisements
+\item Séléction artificielle
+\item Conclusion sur la partie 3 (a mettre dans tests peut etre ?)
+\end{itemize}
+
+
+
 \section{Tests}
+
+\subsection{Détermination de la période}
+
+\subsubsection{Méthode courte}
+
+Les longueurs possible des sous chaines sont automatiquement testées
+dans le programme de test.
+Celles-ci vont de la longueur du texte divisé par 2 à 2.
+
+\begin{lstlisting}
+\$ python kasiski_court.py
+text? -> texte exemple de la jangada
+...
+...
+test d'une longueur de sous chaine de:5
+test d'une longueur de sous chaine de:4
+DDQF       186 # distance entre les sous chaines repetees
+KYUU        12
+test d'une longueur de sous chaine de:3
+RYM        192
+TOZ        186
+RPL         60
+HHH         54
+
+determination de la période: pgcd de [186, 12, 192, 186, 60, 54] =
+6
+\end{lstlisting}
+
+\subsubsection{Méthode longue}
+
 
 \subsection{Crible}
 
@@ -136,7 +195,7 @@ Pour mettre à rude épreuve la logique de la fonction il était plus
 simple d'employer une séquence de lettres avec des répétitions aux
 endroits qui nous intéressait.
 
-\begin{lstlisting}[caption={test de la fonction pertinence}]
+\begin{lstlisting}
 >> p = 6 # la periode
 >> pertinence('soldats',p)
 >> 1.0
@@ -146,6 +205,7 @@ endroits qui nous intéressait.
 
 \subsubsection{Rareté}
 
+\subsection{Reconstitution du chiffre}
 
 
 \section{Conclusion}

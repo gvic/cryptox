@@ -1,0 +1,10 @@
+<<<<<<< .mine
+# -*- coding: utf-8 -*-
+=======
+
+def pertinence():
+    return ret
+
+def vraisemblance():
+    return ret
+>>>>>>> .r15

@@ -25,22 +25,25 @@ def kasiski_long(text):
 
     solutions = [indexP(ad,v) for v in maxs]
     # Solutions should be sorted (as we read the list from beginning to end)
-
-    print "Here are the period values possible:"
-    print solutions
     length = len(solutions)-1
-    print "Which one do you wan't to choose? (0,1,..,%d)" % length
+    if length > 0:
+        print "Here are the period values possible:"
+        print solutions
+        print "Which one do you wan't to choose? (0,1,..,%d)" % length
 
-
-    x = -1
-    while x<0:
-        try:
-            x = int(raw_input())
-            if x > len(solutions)-1:
-                x = -1
-                raise ValueError
-        except ValueError:
-            print 'Invalid Number'
+        x = -1
+        while x<0:
+            try:
+                x = int(raw_input())
+                if x > len(solutions)-1:
+                    x = -1
+                    raise ValueError
+            except ValueError:
+                print 'Invalid Number'
+    elif length <0:
+        raise Exception
+    else:
+        x = 0
 
     return solutions[x]
 
@@ -87,7 +90,7 @@ def differences(lst):
 
 
 def determin_list(input_liste):
-    l = range(24)
+    l = range(48)
     lst = [0 for e in l]
     
     # On parcourt de 0 a 23
@@ -122,5 +125,6 @@ def main():
       
     print kasiski_long(text)
  
+
 if __name__ == "__main__":
     main()

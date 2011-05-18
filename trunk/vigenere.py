@@ -6,17 +6,9 @@ Vigenere
 """
 
 alphabet0 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-# alphabet1 = "gqkreshtovwmcjxyzpflundiab".upper()
-# alphabet2 = "mvqwjxoyszlrhpundtkiabcdfg".upper()
-# alphabet3 = "cmgoapeqjrshiftvwkbxyzlund".upper()
-# alphabet4 = "jsotgvkwqxypfmzlurhndiabce".upper()
-# alphabet5 = "vnydsiwalbczrxefguthjkmopq".upper()
-# alphabet6 = "hrmsftjvpwxoekyzlqgundiabc".upper()
-# alphabet7 = "wdzitaxbucelsyfghnvjkmopqr".upper()
 
 base = len(alphabet0)
 
-# alphabets = [alphabet1, alphabet2, alphabet3, alphabet4, alphabet5, alphabet6, alphabet7]
 alphabets = [alphabet0]
 nalphabets = len(alphabets)
 

@@ -48,7 +48,7 @@ def frequence_crible(crible):
     return sorted(d.iteritems(), key=operator.itemgetter(1), reverse=True)
 
 def table_frequences(chiffre,periode):
-    table = [{}]*(periode)
+    table = [{}]*periode
     for i,c in enumerate(chiffre):
         ii = i % periode
         print table

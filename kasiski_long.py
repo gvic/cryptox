@@ -20,7 +20,7 @@ def kasiski_long(text):
     # The max isn't always the solution..
     # Let's try to finds the maxS
     # By getting a max limit = max - 10%*max
-    limit = ret-ret/10  
+    limit = ret-ret/20  
     maxs = [i for i in ad if i>limit]
 
     solutions = [indexP(ad,v) for v in maxs]

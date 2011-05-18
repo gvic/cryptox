@@ -2,40 +2,6 @@
 from ToolBox import *
 from kasiski_long import all_differences
 
-# def pertinence(crible, periode):
-#     n = len(crible)
-#     crible = crible.upper()
-#     occ = []
-#     ret = {}
-#     # ret est un dictionnaire dont les clés sont les lettres qui composent le crible. 
-#     # Il n'y a qu'une seule occurence de ces clés
-#     # A chaque clé est associé un tuple informant sur le nombre d'occurences de cette clé 
-#     # dans le mot et ses positions
-#     # exemple : {'c':[4, [1,3,5], p]} : 
-#     #           La lettre c apparait 4 fois dans le crible au position [1,3,5]
-#     #           p est l'indice de pertinence de la lettre
-
-
-#     for i,c in enumerate(crible):
-#         if c in ret:
-#             # la clé existe deja
-#             ret[c][0] += 1        # on rajoute +1 au nb d'occurence de la lettre
-#             indices = list(ret[c][1])
-#             tmp = i
-#             for ii in indices:
-#                 if tmp - ii == periode:
-#                     ret[c][2] += 1
-#                 tmp = ii
-                                                
-#             ret[c][1].append(i)   # on enregistre sa position
-
-#         else:
-#             ret[c]=[1,[i], 0]        
-
-
-    
-#     return ret
-
 def pertinence(crible,periode):
     l = all_differences(crible)
     indice = 0

@@ -54,10 +54,12 @@ def table_frequences(chiffre,periode):
         print table
         print ii, table[ii]
         raw_input()
-        if c in table[ii]:
-            table[ii][c] += 1
+        d = dict(table[ii])
+        if c in d:
+            d[c] += 1
         else:
-            table[ii][c] = 1
+            d[c] = 1
+        table[ii] = dict(d)
     return table
 
 def vraisemblance():

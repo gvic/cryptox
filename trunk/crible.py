@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from ToolBox import *
 from kasiski_long import all_differences
+import operator
+
 
 def pertinence(crible,periode):
     l = all_differences(crible)
@@ -35,7 +37,31 @@ def rarete(freq_table ,crible):
 
     return abs((1 - tot/(n*max_freq)))
 
+
+def frequence_crible(crible):
+    d = {}
+    for c in crible:
+        if c in d:
+            d[c] += 1
+        else:
+            d[c] = 1
+    return sorted(d.iteritems(), key=operator.itemgetter(1), reverse=True)
+
+def table_frequences(chiffre,periode):
+    table = [{}]*(periode)
+    for i,c in enumerate(chiffre):
+        ii = i % periode
+        print table
+        print ii, table[ii]
+        raw_input()
+        if c in table[ii]:
+            table[ii][c] += 1
+        else:
+            table[ii][c] = 1
+    return table
+
 def vraisemblance():
+
     return ret
 
 

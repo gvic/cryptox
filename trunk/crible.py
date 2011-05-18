@@ -51,9 +51,6 @@ def table_frequences(chiffre,periode):
     table = [{}]*periode
     for i,c in enumerate(chiffre):
         ii = i % periode
-        print table
-        print ii, table[ii]
-        raw_input()
         d = dict(table[ii])
         if c in d:
             d[c] += 1
@@ -62,9 +59,12 @@ def table_frequences(chiffre,periode):
         table[ii] = dict(d)
     return table
 
-def vraisemblance():
+def vraisemblance(text,crible,periode):
+    distances = []
+    for i in range(periode):
+        i
 
-    return ret
+    return distances
 
 
 # Test Function

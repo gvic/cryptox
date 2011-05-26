@@ -133,6 +133,25 @@ le mot.
 Nous n'avons pas réussi à établir une fonction d'évaluation de la
 vraisemblance d'une position d'un crible.
 
+Cependant nous avons codé une fonction \textit{table\_frequences} qui, à un
+crible et une période données, nous renvoie une liste de la longueur
+de la \textit{période}.
+
+On nommera cette liste \textit{l}.
+
+Chaque élément de \texit{l}, est une liste des
+lettres qui se trouvent à une position \textit{j} dans le crible, modulo
+la valeur de la \textit{période}.
+
+Nous appelerons cette seconde liste \textit{l$'$}
+
+Chaque \textit{l'} listent des couples contenant la lettre et son
+occurrence. L'occurrence est en le nombre de fois ou on a trouvé cette
+lettre à la position \textit{j} modulo la \textit{période}
+
+Voir dans la partie test pour avoir des exemples clairs.
+
+
 
 \subsection{Reconstitution du chiffre}
 
@@ -184,7 +203,7 @@ determination de la période: pgcd de [186, 12, 192, 186, 60, 54] =
 \end{lstlisting}
 
 \subsubsection{Méthode longue}
-
+...
 
 \subsection{Crible}
 
@@ -214,6 +233,23 @@ de tests : \\
    0.535415100974 & 0.406934585165 & 0.49089956356 & 0.38087729338 & 0.692843895006  \\
   \hline
 \end{tabular}
+
+\subsubsection{Vraisemblance}
+
+Le premier paramètre de la fonction est le crible et le seconde la période
+
+\begin{lstlisting}
+>>> from crible import *
+>>> table_frequences("soldats",6)
+[('s', 2), ('o', 1), ('l', 1), ('d', 1), ('a', 1), ('t', 1)]
+
+>>> table_frequences("onomatope",6)
+[('o', 2), ('p', 1, 'n', 1), ('e', 1, 'o', 1), ('m', 1), ('a', 1),
+  ('t', 1)]
+
+>>> table_frequences("tagadaga",2)
+[('t', 1, 'g', 2, 'd', 1), ('a', 4)]
+\end{lstlisting}
 
 
 \subsection{Reconstitution du chiffre}

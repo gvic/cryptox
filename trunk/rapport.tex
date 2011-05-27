@@ -427,13 +427,18 @@ compris entre 0 et 1 pour déterminer le volume mémoriel d'un
 alphabet. Voici les exemples d'exécutions:\\
 
 \begin{lstlisting}
+# Alphabet normal
 >> volume_memoriel_alphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 0.04
+# Alphabet inverse
 >> volume_memoriel_alphabet("ZYXWVUTSRQPONMLKJIHGFEDCBA")
 0.04
->> volume_memoriel_alphabet("ABCEFGHJKLUNDIMOPQRSTVWXYZ")
+# Alphabet avec un mot clef
+>> volume_memoriel_alphabet("ABCEFGHJKlundiMOPQRSTVWXYZ")
 0.28
-
+# Alphabet tres desordonne
+>> volume_memoriel_alphabet("ABDGKPVCLTEOZFUHIWJMQNSXT") 
+0.60  
 \end{lstlisting}
 
 \section{Conclusion}

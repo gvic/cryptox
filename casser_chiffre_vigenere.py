@@ -92,8 +92,8 @@ def casser(chiffre, periode, Lang_Freq):
                 key += ALPHABET[pos]
 
             # Print possible key and text
-            print key
-            print text            
+            print "Cle : %s" % key
+            print "Text : %s" % text            
         
 
 # Nombre d'occurence d'un caractere c dans une chaine x

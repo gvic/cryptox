@@ -26,6 +26,7 @@ def kasiski_long(text):
     solutions = [indexP(ad,v) for v in maxs]
     # Solutions should be sorted (as we read the list from beginning to end)
     length = len(solutions)-1
+    print text
     if length > 0:
         print "Here are the period values possible:"
         print solutions
@@ -123,7 +124,7 @@ def main():
     text += "ntzhh  hnfep mqkyu uexkt ogzgk yuumf vijdq dpzjq sykrp lxhxq"
     text += "rymvk  lohhh otozv dkspp suvjh d"
       
-    print kasiski_long(text)
+    print kasiski_long(text1)
  
 
 if __name__ == "__main__":

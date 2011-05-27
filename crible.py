@@ -78,14 +78,14 @@ def main():
     print '(Q)uitter'
     question=str(raw_input())
 
-    if question == 'Q':
+    if question.upper() == 'Q':
         return 4
-    while not isinstance(question,str) or (question != 'P' and question != 'L' and question != 'R'):
+    while not isinstance(question,str) or (question.upper() != 'P' and question.upper() != 'L' and question.upper() != 'R'):
         print question + " n'est pas valide!"
         question=str(raw_input())
 
 
-    if question == "P" or question == "L":
+    if question.upper() == "P" or question.upper() == "L":
         # PERTINENCE
         print "RECHERCE DE LA PERTINENCE"
         crible=str(raw_input('Veuillez tapez un crible:'))
@@ -104,7 +104,7 @@ def main():
         print "--------------------"
         raw_input()
 
-    if question == "R" or question == "L":
+    if question.upper() == "R" or question.upper() == "L":
         # RARETE
         if question == "R":
             crible=str(raw_input('Veuillez tapez un crible:'))

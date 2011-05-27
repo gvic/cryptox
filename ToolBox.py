@@ -126,3 +126,35 @@ def pgcdn(n):
     for x in n[2:]:
         p = pgcd(p, x)
     return p
+
+def distance_letters(a,b):
+    """
+    # Compute the diffs between two letters
+    # input : two letters
+    #
+    # Example : distence_letters("a","c") returns 2
+    """
+    pos_a = ALPHABET.find(a.upper())
+    pos_b = ALPHABET.find(b.upper())
+
+    if pos_b == -1 or pos_a == -1:
+        raise BaseException("Char %s and %s not recognized.." % a,b)
+    else:
+        diff = pos_b - pos_a
+
+    # Special case..
+    if a.upper()=='Z' and b.upper()=='A' or a.upper()=='A' and b.upper()=='Z':
+        diff = 1;
+        
+    return abs(diff)
+    
+def swap(string, i, j):
+    l = len(string)
+    if i<0 or j<0 or i>l or j>l:
+        raise BaseException('The String is too small, change swap parameters')
+    else:
+        lstring = list(string)
+        #swap
+        lstring[i-1],lstring[j-1] = lstring[j-1],lstring[i-1]
+
+    return ''.join(lstring)

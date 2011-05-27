@@ -22,7 +22,7 @@
 
 \begin{abstract}
   Ce projet implante une solution de décryptage face à un chiffre
-  polyalphabétique périodique .
+  polyalphabétique.
 
   Ce décryptage se réalise selon plusieurs étapes que nous décrirons
   dans le présent rapport.
@@ -101,11 +101,11 @@ def kasiski_court(text, l):
 
 
 \subsubsection{Méthode longue}
-La methode longue a été implanté en suivant le cours n°11 de LANAKI.
+La méthode longue a été implanté en suivant le cours n°11 de LANAKI.
 
 Voici en quelques mots ce que réalise notre programme:
 \begin{itemize}
-\item Récupère toutes les distances lettres à lettres du chiffre.
+\item Récupère toutes les distances lettre à lettre du chiffre.
 \item Pour tout facteur \textit{x} entre 1 et 48 :
   \begin{itemize}
   \item compter le nombre de fois dont \textit{x} est diviseur des
@@ -194,7 +194,7 @@ Pour valuer le volume mémoriel d'UN alphabet nous avons eu comme idée
 de regarder les espaces deux-à-deux entre les lettres de
 l'alphabet. Puis de compter le nombre d'espacement différents dans
 cette alphabet.\\
-Ainsi plus les lettres sont espacés de manières aléatoires, plus
+Ainsi plus les lettres sont espacées de manières aléatoires, plus
 l'alphabet est dur à retenir et par conséquent son volume memoriel
 augmente.\\
 
@@ -203,7 +203,7 @@ alphabet. Les exemples d'éxécution sont disponibles dans la section
 tests.\\}
 
 Il faut ensuite réfléchir à l'idée de volume mémoriel pour un ensemble
-d'alphabet.\\
+d'alphabets.\\
 Par exemple si l'alphabet est répété plusieurs fois et seulement
 décalé, le volume mémoriel pour l'ensemble des alphabets n'est pas
 énorme. Il suffit de connaitre les décalages respectifs de chaque
@@ -216,7 +216,7 @@ augmente.
 \subsubsection{Programmation génétique}
 En pensant utile de vous montrer ceci le jour des tests, nous avons
 implanté la methode proposée par M. Marthon pour casser des vigenères
-simples (Avec clé). Avec le calcul d'Indice de Coincidence Mutelle. \\
+simples (avec clé). Avec le calcul d'indice de coincidence mutelle. \\
 
 Le programme realisé est \textbf{casser\_chiffre\_vigenere}.\\
 Des tests de ce programme se trouvent dans la section test.\\
@@ -227,10 +227,10 @@ pu implanter.\\
 \item \textbf{ADN et croisements}\\
 Nous pensions garder les lettres et leur ordre pour définir l'ADN d'un alphabet.\\
 
-Nous avons commencé a implanter deux fonctions pour modifier les ADNs: \textit{mutation} et \textit{croisement}.
+Nous avons commencé à implanter deux fonctions pour modifier les ADNs: \textit{mutation} et \textit{croisement}.
 Celles-ci sont disponibles dans le fichier \textbf{genetique.py}.\\
 
-Voici l'explication de ces deux fontions:\\
+Voici l'explication de ces deux fonctions:\\
 
 \underline{mutation(alphabet, niveau)}\\
 Cette fonction fait muter certaines parties d'un alphabet. Une
@@ -241,7 +241,7 @@ Exemple: \textit{mutation("abcdefghi",3)} pourrait donner
 \textit{e} et \textit{f} puis \textit{g} et \textit{i}.\\
 
 \underline{croisement(alphabet1, alphabet2)}
-Nous avons penser a faire un croisement entre deux alphabets en
+Nous avons pensé à faire un croisement entre deux alphabets en
 choisissant aléatoirement une moitié de l'un des deux. Puis d'échanger
 les lettres une à une avec cette moitié. Voici un schéma qui
 expliquera mieux qu'un discours avec deux alphabets Alphabet1 et
@@ -254,15 +254,15 @@ Alphabet2. Le résultat est le fils à la fin du schéma.
 
 \item \textbf{Séléction artificielle}
 On peut sélectionner les individus en fonction du volume mémoriel de
-chacun. Sachant qu'on cherche a minimiser ce volume mémoriel et
+chacun. Sachant qu'on cherche à minimiser ce volume mémoriel et
 essayer de retrouver les alphabets.\\
 
 \item \textbf{Conclusion}
 Bien sûr la taille des populations, le nombre de croisements, de
-mutations ne peut être évalué que par l'expérimentation puisque la
+mutations ne peuvent être évalués que par l'expérimentation puisque la
 programmation génétique est une approche heuristique d'un problème.\\
 C'est donc dommage de ne pas avoir pu finir l'implantation pour
-tester. Mais on peut penser que avec une valuation totale du texte
+tester. Mais on peut penser qu'avec une valuation totale du texte
 clair, les algorithmes génétiques auraient pu trouver la solution de
 la clé alphabétique.\\
 
@@ -278,7 +278,7 @@ obtenir des résultats intéressants pour des valuations partielles.
 
 \subsubsection{Méthode courte}
 
-Les longueurs possible des sous chaines sont automatiquement testées
+Les longueurs possibles des sous chaines sont automatiquement testées
 dans le programme de test.
 Celles-ci vont de la longueur du texte divisé par 2 à 2.\\
 
@@ -302,7 +302,7 @@ determination de la periode: pgcd de [186, 12, 192, 186, 60, 54] =
 \end{lstlisting}
 
 \subsubsection{Méthode longue}
-Premier exemple sur la jangada: (Periode attendu : 6)\\
+Premier exemple sur la jangada: (Période attendue : 6)\\
 
 \begin{lstlisting}
 >> python kasiski_long.py 
@@ -317,7 +317,7 @@ Which one do you wan't to choose? (0,1,..,1)
 result : 6
 \end{lstlisting}
 
-Deuxième exemple provenant de Lanaki: (Periode attendu : 7)
+Deuxième exemple provenant de Lanaki: (Période attendue : 7)
 \begin{lstlisting}
 >> python kasiski_long.py 
 
@@ -345,7 +345,7 @@ endroits qui nous intéressait.
 \end{lstlisting}
 
 \subsubsection{Rareté}
-Voici sous forme d'un tableau la rareté obtenu pour différent crible
+Voici sous forme d'un tableau la rareté obtenu pour différents cribles
 de tests : \\
 
 \begin{tabular}{|c|c|c|c|c|}
@@ -422,7 +422,7 @@ CHEMIN, QUE NE FONT CEUX QUI COURENT ET QUI S EN ELOIGNENT.
 \end{lstlisting}
 
 \subsubsection{Volume mémoriel}
-La fonction implanter ici n'est qu'une ébauche. Elle renvoie un nombre
+La fonction implantée ici n'est qu'une ébauche. Elle renvoie un nombre
 compris entre 0 et 1 pour déterminer le volume mémoriel d'un
 alphabet. Voici les exemples d'exécutions:\\
 
@@ -443,12 +443,10 @@ alphabet. Voici les exemples d'exécutions:\\
 
 \section{Conclusion}
 Le sujet de ce projet nous a beacoup plu, bien qu'il soit long.
-Meme si nous n'avons pas pu le mener à sa fin, il nous a permis de nous
+Même si nous n'avons pas pu le mener à sa fin, il nous a permis de nous
 plonger dans le domaine de la cryptologie.
-En deça, les spécifications étant assez large, nous avons du prendre
-un certains nombre de décision. Cette liberté accordée était une motivation de plus dans la
+En deça, les spécifications étant assez larges, nous avons du prendre
+un certains nombre de décisions. Cette liberté accordée était une motivation de plus dans la
 réalisation de ce projet.
-
-
 
 \end{document}

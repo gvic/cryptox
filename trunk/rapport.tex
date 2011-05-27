@@ -1,5 +1,6 @@
 \documentclass[a4paper, 11pt]{article}
 
+\usepackage{graphicx}
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -49,8 +50,9 @@ trois \textit{indicateurs} : la \textit{pertinence}, la
 \paragraph{}
 Enfin il nous était demandé d'avoir une approche de programmation génétique pour
 pouvoir retrouver complètement les alphabets servant à chiffrer le
-texte clair. Cependant nous n'avons pas eu le temps de nous consacrer à
-cette tâche.
+texte clair. Cependant nous n'avons pas eu le temps de nous consacrer
+pleinement à cette tâche. Nous presenterons donc seulement nos
+reflexions sur le sujet.
 
 
 \section{Conception}
@@ -97,7 +99,29 @@ def kasiski_court(text, l):
 
 
 \subsubsection{Méthode longue}
-... 
+La methode longue a été implanter en suivant le cours n 11 de LANAKI.
+
+Voici en quelques mots ce que réalise notre programme:
+\begin{itemize}
+\item Récupère toutes les distances-lettres possibles du chiffre.
+\item Pour tout facteur entre 1 et 48 :
+  \begin{itemize}
+  \item compter le nombre de fois dont ce facteur est un diviseur des
+    distances.
+  \end{itemize}
+\item Enfin pondérer chaque sous-totaux obtenus par leur facteur
+  respectif.
+\end{itemize}
+
+La période est alors le facteur pour lequel le total est maximum. Ou
+tout du moins quasiment maximum.\\
+Pour laisser un peu de liberte a l'utilisateur, nous avons pris les
+maximums obtenus et lui avons laisser le choix de la période à
+choisir.\\
+
+Des tests et exemples d'éxécution de ce programme sont disponibles
+dans la section tests.
+
 
 \subsection{Recherche de crible}
 
@@ -164,11 +188,84 @@ Voir dans la partie test pour avoir des exemples clairs.
 
 
 \subsubsection{Volume mémoriel}
+
+Pour valuer le volume mémoriel d'UN alphabet nous avons eu comme idée
+de regarder les espaces deux-à-deux entre les lettres de
+l'alphabet. Puis de compter le nombre d'espacement différents dans
+cette alphabet.\\
+Ainsi plus les lettres sont espacés de manières aléatoires, plus
+l'alphabet est dur à retenir et par conséquent son volume memoriel
+augmente.
+\textit{Nous avons implanter cette fonction de volume mémoriel pour UN
+alphabet. Les exemples d'éxécution sont disponibles dans la section
+tests.\\}
+
+Il faut ensuite réfléchir à l'idée de volume mémoriel pour un ensemble
+d'alphabet.\\
+Par exemple si l'alphabet est répété plusieurs fois et seulement
+décalé, le volume mémoriel pour l'ensemble des alphabets n'est pas
+énorme. Il suffit de connaitre les décalages des alphabets (par
+exemple : avec un mot clef comme dans l'exemple du sujet). L'idée ici
+est donc de comparer les alphabets (aux décalages près): plus ils sont "éloignés", plus le
+volume mémoriel augmente.
+
+
+
 \subsubsection{Programmation génétique}
+En pensant utile de vous montrer ceci le jour des tests, nous avons
+implanté la methode proposée par M. Marthon pour casser des vigenères
+simples (Avec clé). Avec le calcul d'Indice de Coincidence Mutelle. \\
+
+Le programme realisé est \textbf{casser\_chiffre\_vigenere}.
+
+Des tests de ce programme se trouvent dans la section test.\\
+
+
+Ce qui suit sont nos réfléxions sur les algorithmes génétiques que nous aurions
+pu implanter.\\
 \begin{itemize}
-\item ADN et croisements
-\item Séléction artificielle
-\item Conclusion sur la partie 3 (a mettre dans tests peut etre ?)
+\item \textbf{ADN et croisements}
+
+Nous pensions garder les lettres et leur ordre pour définir l'ADN d'un alphabet.
+
+Nous avons commencé a implanter deux fonctions pour modifier les ADNs: \textit{mutation} et \textit{croisement}.
+Celles-ci sont disponibles dans le fichier \textbf{genetique.py}.
+
+Voici l'explication de ces deux fontions:
+
+\underline{mutation(alphabet, niveau)}
+Cette fonction fait muter certaines parties d'un alphabet. Une
+mutation étant un échange de deux lettres dans l'alphabet. Le paramètre
+\textit{niveau} détermine le nombre de mutations à effectuer.
+
+\underline{croisement(alphabet1, alphabet2)}
+Nous avons penser a faire un croisement entre deux alphabets, on
+choisissant aléatoirement une moitié de l'un des deux. Puis d'échanger
+les lettres une à une avec cette moitié. Voici un schéma qui
+expliquera mieux qu'un discours avec deux alphabets Alphabet1 et
+Alphabet2. Le résultat est le fils à la fin du schéma.
+ 
+\begin{center}
+ \scalebox{0.6}[0.6]{\includegraphics{./croisement.jpg}}
+\end{center}
+
+
+\item \textbf{Séléction artificielle}
+On peut sélectionner les individus en fonction du volume mémoriel de
+chacun. Sachant qu'on cherche a minimiser ce volume mémoriel et
+essayer de retrouver les alphabets.
+
+\item \textbf{Conclusion}
+Bien sûr la taille des populations, le nombre de croisements, de
+mutations ne peut être évalué que par l'expérimentation. Encore une
+fois c'est dommage de ne pas avoir pu finir l'implantation pour
+tester. Mais on peut penser que avec une valuation totale du texte
+clair, les algorithmes génétiques auraient pu trouver la solution de
+la clé alphabétique. \\
+
+Associer au travail sur les cribles, on pourrait sûrement
+obtenir des résultats intéressants.
+
 \end{itemize}
 
 
@@ -190,7 +287,7 @@ text? -> texte exemple de la jangada
 ...
 test d'une longueur de sous chaine de:5
 test d'une longueur de sous chaine de:4
-DDQF       186 # distance entre les sous chaines repetees
+DDQF       186 # distance entre les sous chaines repétées
 KYUU        12
 test d'une longueur de sous chaine de:3
 RYM        192
@@ -198,12 +295,36 @@ TOZ        186
 RPL         60
 HHH         54
 
-determination de la période: pgcd de [186, 12, 192, 186, 60, 54] =
+détermination de la période: pgcd de [186, 12, 192, 186, 60, 54] =
 6
 \end{lstlisting}
 
 \subsubsection{Méthode longue}
 ...
+
+Premiere exemple sur la jangada: (Periode attendu : 6)
+\begin{lstlisting}
+moore:~/Travail/2A/RO/cryptox> python kasiski_long.py 
+phyjs  lyddq fdzxg asgzz qqehx gkfnd rxuju giocy tdxvk sbxhhuypoh  dvyry mhuhp uydkj oxphe tozsl etnpm vffov pdpaj xhyynojygg  aymeq ynfuq lnmvl yfgsu zmqiz tlbqg yugsq eubvn rcredgruzb  lrmxy uhqhp zdrrg crohe pqxuf ivvrp lphon thvdd qfhqsntzhh  hnfep mqkyu uexkt ogzgk yuumf vijdq dpzjq sykrp lxhxqrymvk  lohhh otozv dkspp suvjh d
+
+Here are the period values possible:
+[6, 12]
+
+Which one do you wan't to choose? (0,1,..,1)
+0
+
+6
+\end{lstlisting}
+
+Deuxieme exemple provenant de Lanaki: (Periode attendu : 7)
+\begin{lstlisting}
+moore:~/Travail/2A/RO/cryptox> python kasiski_long.py 
+
+RNQJH  AUKGV  WGIVO  BBSEJ  CRYUS  FMQLP  OFTLCMRHKB BUTNA  WXZQS  NFWLM  OHYOF  VMKTV  HKVPKKSWEI  TGSRB LNAGJ  BFLAM  EAEJW  WVGZG  SVLBKIXHGT  JKYUC  HLKTU MWWK
+
+7
+\end{lstlisting}
+
 
 \subsection{Crible}
 
@@ -254,6 +375,43 @@ Le premier paramètre de la fonction est le crible et le seconde la période
 
 \subsection{Reconstitution du chiffre}
 
+\begin{lstlisting}
+moore:~/Travail/2A/RO/cryptox> ./casser_chiffre_vigenere.py exemples/mystere_chiffre 
+
+Chiffre : CE JGB FVNA WGG CA KZCFV DC ECAUE TS AVVUF HOEKAOéW ;
+QNI CPSQHE PMFGR VN êBJS FZ BQWB CFUZNI, DLE KWIK DêMM IIV JOVL ZRJ PTMG
+QZFNAQVCEA à UCAKEVLSE VN BGIGV ACLFR THWKS A’FNB HCVET KGIGLMM V’SA UéSQJSE GLCK EH’ZLA WB BET.
+MF EHFI QD B’RJT XSG IIAQKSZSLITZR HUM LCHJ SM LFBDPMFH : ZRIA HZHKôT KWZN KéMWAUAV QCW ZN
+GUQKGNECM VS OZEV BITVR ML RVJTQFUHVR TW JERI L’SJRT LM XOHO, QCA SFK PZGDEVMMFH PV QC’GB AFMUW
+ZR SOV KSAJ OC DO ERIAGB, RJT VSHHIETDSZVNB éYOYV EV LCHJ LMK VBDMMK ; SG RIVKW DLE TS
+RVMEZKWGé UE VGG BGIVACAJ NM NWRET XSG QV CM IIR CEA MBF JOVL DYLS ZSWFFNVSPYVS YMS YVS
+IMHEVS, USWF JECDSZVNB VS PV QCW BBLS KGBQLIAGBF EOA HSAJéEA HOE UIDWFFVS DGWRJ, EB FS
+PFNAARéEFNA HOF CEA EêARJ CPGGRJ. CIJ QR E’EAL DNJ AAKSM U’ADGWE C’EAHFVK BWF, ANZS TW
+DEZNKADNC EAL RR C’AXHZVHUMJ PVVN. TWG CCUA YFNEDMK âARJ SWFH PRPITZRJ DMK DYLS OJOAUS DAQRJ
+ACKGV SIMF EHV DMK DYLS OJOAUEA NSEKUA ; WH PVUF IIV EE USFPYEVL EHV FWJH YVNBWARET XWIIVNB
+SJNECMJ PRRUKGIC UADSBGRGM, K’WYJ SCAJRET BGIWFUZK ZR URWAH PYEUAB, DLE VW TBET KWIK HUQ
+UCHIEVL SG HUQ K’SA éCOQYBRET.
+
+Here are the period values possible:
+[6, 12]
+Which one do you wan't to choose? (0,1,..,1)
+0
+
+Cle : RAISON
+Text : LE BON SENS EST LA CHOSE DU MONDE LA MIEUX PARTAGéE ;
+CAR CHACUN PENSE EN êTRE SI BIEN POURVU, QUE CEUX MêME QUI SONT LES PLUS
+DIFFICILES à CONTENTER EN TOUTE AUTRE CHOSE N’ONT POINT COUTUME D’EN DéSIRER PLUS QU’ILS EN ONT.
+EN QUOI IL N’EST PAS VRAISEMBLABLE QUE TOUS SE TROMPENT : MAIS PLUTôT CELA TéMOIGNE QUE LA
+PUISSANCE DE BIEN JUGER ET DISTINGUER LE VRAI D’AVEC LE FAUX, QUI EST PROPREMENT CE QU’ON NOMME
+LE BON SENS OU LA RAISON, EST NATURELLEMENT éGALE EN TOUS LES HOMMES ; ET AINSI QUE LA
+DIVERSITé DE NOS OPINIONS NE VIENT PAS DE CE QUE LES UNS SONT PLUS RAISONNABLES QUE LES
+AUTRES, MAIS SEULEMENT DE CE QUE NOUS CONDUISONS NOS PENSéES PAR DIVERSES VOIES, ET NE
+CONSIDéRONS PAS LES MêMES CHOSES. CAR CE N’EST PAS ASSEZ D’AVOIR L’ESPRIT BON, MAIS LE
+PRINCIPAL EST DE L’APPLIQUER BIEN. LES PLUS GRANDES âMES SONT CAPABLES DES PLUS GRANDS VICES
+AUSSI BIEN QUE DES PLUS GRANDES VERTUS ; ET CEUX QUI NE MARCHENT QUE FORT LENTEMENT PEUVENT
+AVANCER BEAUCOUP DAVANTAGE, S’ILS SUIVENT TOUJOURS LE DROIT CHEMIN, QUE NE FONT CEUX QUI
+COURENT ET QUI S’EN éLOIGNENT.
+\end{lstlisting}
 
 \section{Conclusion}
 

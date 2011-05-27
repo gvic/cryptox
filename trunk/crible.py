@@ -59,13 +59,6 @@ def table_frequences(chiffre,periode):
         table[ii] = dict(d)
     return table
 
-def vraisemblance(text,crible,periode):
-    distances = []
-    for i in range(periode):
-        i
-
-    return distances
-
 
 # Test Function
 def main():
@@ -74,18 +67,24 @@ def main():
     print 'Veuillez choisir la fonction a évaluer:'
     print '(P)ertinence'
     print '(R)areté'
-    print '(L)es deux'
+    print '(V)raisemblance'
+    print '(L)es 3'
     print '(Q)uitter'
-    question=str(raw_input())
+    question = ''
+    question=raw_input()
 
-    if question.upper() == 'Q':
+    if question == 'Q':
         return 4
-    while not isinstance(question,str) or (question.upper() != 'P' and question.upper() != 'L' and question.upper() != 'R'):
+
+    while (not question or (question != 'P' and question != 'L' and question != 'R' and question != 'V')):
         print question + " n'est pas valide!"
-        question=str(raw_input())
+        question=raw_input()
+        if question == 'Q':
+            return 4
+    
 
 
-    if question.upper() == "P" or question.upper() == "L":
+    if question == "P" or question == "L":
         # PERTINENCE
         print "RECHERCE DE LA PERTINENCE"
         crible=str(raw_input('Veuillez tapez un crible:'))
@@ -96,7 +95,7 @@ def main():
         period=int(raw_input('Veuillez tapez une période:'))
         while not isinstance(period,int):
             print str(period) + " n'est pas un entier!"
-            crible=int(raw_input('Veuillez tapez une période:'))
+            period=int(raw_input('Veuillez tapez une période:'))
 
         print "Calcul de la pertinence..."
         per = pertinence(crible,period)
@@ -104,7 +103,7 @@ def main():
         print "--------------------"
         raw_input()
 
-    if question.upper() == "R" or question.upper() == "L":
+    if question == "R" or question == "L":
         # RARETE
         if question == "R":
             crible=str(raw_input('Veuillez tapez un crible:'))
@@ -125,6 +124,28 @@ def main():
         print "Evaluation de la rarete du crible \""+crible+"\"..."
         rar = rarete(freq_table,crible)
         print "resultat:"+str(rar)
+        print "--------------------"
+
+
+    if question == "V" or question == "L":
+        # VRAISEMBLANCE
+        if question == "V":
+            crible=str(raw_input('Veuillez tapez un crible:'))
+            while not isinstance(crible,str):
+                print crible + " n'est pas une chaine de caractère!"
+                crible=str(raw_input('Veuillez tapez un crible:'))
+            
+            period=int(raw_input('Veuillez tapez une période:'))
+            while not isinstance(period,int):
+                print str(period) + " n'est pas un entier!"
+                period=int(raw_input('Veuillez tapez une période:'))
+
+            
+        print "Table de fréquence pour le crible et la période donnée(voir partie vraisemblance dans le rapport)"
+
+        t = table_frequences(crible,period)
+        print "resultat:\n"
+        print t
         print "--------------------"
 
 
